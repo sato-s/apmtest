@@ -8,6 +8,18 @@ class TweetsController < ApplicationController
 
   # GET /tweets/1 or /tweets/1.json
   def show
+
+      # Shared parameters
+    Google::Cloud::Trace.in_span "hoge" do |span|
+      # Do stuff...
+      sleep 1
+
+      Google::Cloud::Trace.in_span "fuga" do |subspan|
+        # Do other stuff
+        sleep 2
+      end
+    end
+
   end
 
   # GET /tweets/new

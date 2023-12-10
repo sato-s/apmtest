@@ -67,3 +67,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "google-cloud-trace"
+gem "stackdriver"

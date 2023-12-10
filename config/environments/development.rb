@@ -73,4 +73,13 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  config.google_cloud.project_id = "sato-apm-test"
+  config.google_cloud.keyfile = "gcpkey.json"
+
+  config.google_cloud.trace.project_id = "sato-apm-test"
+  config.google_cloud.trace.keyfile = "gcpkey.json"
+
+
+
 end

@@ -2,6 +2,8 @@ require_relative "boot"
 
 require "rails/all"
 
+require "google/cloud/trace/rails"
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -24,4 +26,19 @@ module Apmtest
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
   end
+end
+
+
+   require "logger"
+
+module MyLogger
+  LOGGER = Logger.new $stderr, level: Logger::WARN
+  def logger
+    LOGGER
+  end
+end
+
+# Define a gRPC module-level logger method before grpc/logconfig.rb loads.
+module GRPC
+  extend MyLogger
 end
